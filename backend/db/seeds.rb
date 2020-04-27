@@ -106,3 +106,8 @@ rumble = Champion.create(name: "Rumble", image_url: "https://images.contentstack
 ryze = Champion.create(name: "Ryze", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt8af977ce4fa7804b/5db05ffa2dc72966da746714/RiotX_ChampionList_ryze.jpg?quality=90&width=250")
 sejuani = Champion.create(name: "Sejuani", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blte4d521b893aa5a3e/5db05ffae9d7526ab429e544/RiotX_ChampionList_sejuani.jpg?quality=90&width=250")
 senna = Champion.create(name: "Senna", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt24f4735ebde3c22b/5db08d642dc72966da74686e/RiotX_ChampionList_senna.jpg?quality=90&width=250")
+sett = Champion.create(name: "Sett", image_url: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sett_0.jpg")
+shaco = Champion.create(name: "Shaco", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltc8b1d1ba926d01cc/5db060036e8b0c6d038c5cba/RiotX_ChampionList_shaco.jpg?quality=90&width=250")
+shen = Champion.create(name: "Shen", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd142d174831b78e9/5db06004242f426df132f97f/RiotX_ChampionList_shen.jpg?quality=90&width=250")
+shyvana = Champion.create(name: "Shyvana", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltdb320ec49e0e02a7/5db0600456458c6b3fc1752d/RiotX_ChampionList_shyvana.jpg?quality=90&width=250")
+singed = Champion.create(name: "Singed", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt766d98c27adfde28/5db06004347d1c6baa57be4f/RiotX_ChampionList_singed.jpg?quality=90&width=250")
