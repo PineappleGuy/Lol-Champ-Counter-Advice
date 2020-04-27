@@ -16,3 +16,8 @@ annie = Champion.create(name: "Annie", image_url: "https://images.contentstack.i
 aphelios = Champion.create(name: "Aphelios", image_url: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_0.jpg")
 ashe = Champion.create(name: "Ashe", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt943aae038e2dee98/5db05fa8e9effa6ba5295f91/RiotX_ChampionList_ashe.jpg?quality=90&width=250")
 asol = Champion.create(name: "Aurelion Sol", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt5dd3569fc67d6664/5db05fa8bd24496c390ae4d8/RiotX_ChampionList_aurelionsol.jpg?quality=90&width=250")
+azir = Champion.create(name: "Azir", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt0e3f847946232167/5db05fa889fb926b491ed7ff/RiotX_ChampionList_azir.jpg?quality=90&width=250")
+bard = Champion.create(name: "Bard", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltbbe3ce0c0ae1305b/5db05fb23a326d6df6c0e7b3/RiotX_ChampionList_bard.jpg?quality=90&width=250")
+blitz = Champion.create(name: "Blitzcrank", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd7ef7e56ce1fe17b/5db05fb26af83b6d7032c8f8/RiotX_ChampionList_blitzcrank.jpg?quality=90&width=250")
+brand = Champion.create(name: "Brand", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltc8ca2e9bba653dda/5db05fb2dc674266df3d5d30/RiotX_ChampionList_brand.jpg?quality=90&width=250")
+braum = Champion.create(name: "Braum", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd140e30fa86d6ddd/5db05fb2242f426df132f95d/RiotX_ChampionList_braum.jpg?quality=90&width=250")
