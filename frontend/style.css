@@ -20,9 +20,14 @@ div.card {
 }
 
 div.card.expand {
-    grid-column: 1 / -1;
-    text-align: left;
-    background-color: lightgrey;
+    grid-column: span 2;
+    grid-row: span 2;
+    text-align: center;
+}
+
+div.card.expand img {
+    width: 100%;
+    opacity: 50%;
 }
 
 div.champion-cards {
