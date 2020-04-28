@@ -19,8 +19,11 @@ function championCard(champion) {
             if(cards[x].classList.contains(champion.name.split(' ').join('')) == false) {
                 cards[x].classList.remove('expand')
             }
+            else if(cards[x].classList.contains(champion.name.split(' ').join('')) == true && cards[x].classList.contains('expand') == true) {
+                cards[x].classList.remove('expand')
+            }
             else {
-                cards[x].classList.add('expand')
+                cards[x].classList.add('expand') 
             }
         }
     })
