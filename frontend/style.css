@@ -13,3 +13,56 @@ img.clip {
     width: 250px;
 }
 
+div.card {
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+div.champion-cards {
+    display: grid;
+    grid-gap: 20px;
+    justify-content: center;
+}
+
+@media (min-width: 1870px) {
+    div.champion-cards{
+        grid-template: auto / repeat(7, 1fr);
+    }
+}
+
+@media (min-width: 1600px) and (max-width: 1870px) {
+    div.champion-cards{
+        grid-template: auto / repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 1350px) and (max-width: 1600px) {
+    div.champion-cards{
+        grid-template: auto / repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1090px) and (max-width: 1350px) {
+    div.champion-cards{
+        grid-template: auto / repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 833px) and (max-width: 1090px) {
+    div.champion-cards{
+        grid-template: auto / repeat(3, 1fr); 
+    }
+}
+
+@media (min-width: 555px) and (max-width: 833px) {
+    div.champion-cards{
+        grid-template: auto / repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 555px) {
+    div.champion-cards{
+        grid-template: auto / 1fr; 
+    }
+}
