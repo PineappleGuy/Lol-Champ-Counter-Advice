@@ -5,5 +5,22 @@ const COMMENTS_URL = `${BASE_URL}/comments`
 fetch(CHAMPIONS_URL)
     .then((resp) => resp.json())
     .then(function(json) {
-        console.log(json)
+        json.forEach(championCard)
     });
+
+function championCard(champion) {
+    let div = document.querySelector('div.champion-cards')
+    let card = document.createElement('div')
+    card.classList.add('card')
+    card.classList.add(`${champion.name.split(' ').join('')}`)
+    let img = document.createElement('img')
+    img.setAttribute('src', champion.image_url)
+    if(champion.name == 'Sett' || champion.name == 'Aphelios') {
+        img.classList.add('clip')
+    }
+    let h2 = document.createElement('h2')
+    h2.innerText = champion.name
+    card.appendChild(img)
+    card.appendChild(h2)
+    div.appendChild(card)
+}
