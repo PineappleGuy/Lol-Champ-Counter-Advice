@@ -1,1 +1,15 @@
 
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 250px;
+}
+
+img.clip {
+    object-fit: cover;
+    height: 282px;
+    width: 250px;
+}
+
