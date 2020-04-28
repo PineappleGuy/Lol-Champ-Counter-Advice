@@ -13,6 +13,17 @@ function championCard(champion) {
     let card = document.createElement('div')
     card.classList.add('card')
     card.classList.add(`${champion.name.split(' ').join('')}`)
+    card.addEventListener('click', function() {
+        let cards = document.getElementsByClassName('card')
+        for(let x = 0; x < cards.length; x++) {
+            if(cards[x].classList.contains(champion.name.split(' ').join('')) == false) {
+                cards[x].classList.remove('expand')
+            }
+            else {
+                cards[x].classList.add('expand')
+            }
+        }
+    })
     let img = document.createElement('img')
     img.setAttribute('src', champion.image_url)
     if(champion.name == 'Sett' || champion.name == 'Aphelios') {
@@ -24,3 +35,4 @@ function championCard(champion) {
     card.appendChild(h2)
     div.appendChild(card)
 }
+

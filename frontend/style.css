@@ -19,6 +19,12 @@ div.card {
     text-align: center;
 }
 
+div.card.expand {
+    grid-column: 1 / -1;
+    text-align: left;
+    background-color: lightgrey;
+}
+
 div.champion-cards {
     display: grid;
     grid-gap: 20px;
