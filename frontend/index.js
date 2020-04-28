@@ -3,5 +3,7 @@ const CHAMPIONS_URL = `${BASE_URL}/champions`
 const COMMENTS_URL = `${BASE_URL}/comments`
 
 fetch(CHAMPIONS_URL)
-    .then(resp => resp.json())
-    .then(json => console.log(json));
+    .then((resp) => resp.json())
+    .then(function(json) {
+        console.log(json)
+    });
