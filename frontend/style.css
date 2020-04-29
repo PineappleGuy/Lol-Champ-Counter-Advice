@@ -27,7 +27,12 @@ div.card.expand {
 
 div.card.expand img {
     width: 100%;
+    height: 90%;
     opacity: 50%;
+}
+
+div.card.expand img.clip {
+    object-fit: cover;
 }
 
 div.champion-cards {
