@@ -19,21 +19,30 @@ div.card {
     text-align: center;
 }
 
-div.card.expand {
+div.card.counterCard {
     grid-column: span 2;
     grid-row: span 2;
     text-align: center;
 }
 
-div.card.expand img {
+div.card.clicked {
+    grid-column: 1 / 3;
+    grid-row: span 2;
+}
+
+div.card.clicked img {
+    width: 100%;
+    height: 90%;
+}
+/*div.card.counterCard img {
     width: 100%;
     height: 90%;
     opacity: 50%;
 }
 
-div.card.expand img.clip {
+div.card.counterCard img.clip {
     object-fit: cover;
-}
+}*/
 
 div.champion-cards {
     display: grid;
