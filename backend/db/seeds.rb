@@ -155,3 +155,5 @@ zilean = Champion.create(name: "Zilean", image_url: "https://images.contentstack
 zoe = Champion.create(name: "Zoe", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltd18587f31803441d/5db060226e8b0c6d038c5cc6/RiotX_ChampionList_zoe.jpg?quality=90&width=250")
 zyra = Champion.create(name: "Zyra", image_url: "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt9bc3497cdd04f6d5/5db060229481396d6bdd01c4/RiotX_ChampionList_zyra.jpg?quality=90&width=250")
 
+comment1 = Comment.create(content: 'Pay attention to when she has her stun available. Bait it out', upvotes: 1, downvotes: 0, champion_id: 7)
+comment2 = Comment.create(content: "Go for level 3 engage, proc electocute and pull back. Wait for electrocute to come back up and go in again, use ignite and secure the kill.", upvotes: 1, downvotes: 0, champion_id: 31)

@@ -13,6 +13,30 @@ img.clip {
     width: 250px;
 }
 
+
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0 0 0 0;
+}
+
+li {
+    text-align: left;
+    padding: 3px;
+    background: beige;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+form {
+    text-align: center;
+    background: beige;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 div.card {
     justify-items: center;
     align-items: center;
