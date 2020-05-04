@@ -1,6 +1,7 @@
 const BASE_URL = "http://localhost:3000"
 const CHAMPIONS_URL = `${BASE_URL}/champions`
 const COMMENTS_URL = `${BASE_URL}/comments`
+const COMMENTS_VOTES_URL = `${BASE_URL}/comments/`
 
 fetch(CHAMPIONS_URL)
     .then((resp) => resp.json())
@@ -100,6 +101,7 @@ function championCard(champion) {
         
             content.value = ""
     })
+    
 }
 
 function counterComments(comment) {
@@ -107,24 +109,81 @@ function counterComments(comment) {
     let list = champion.querySelector('ul')
     let li = document.createElement('li')
     li.innerText = comment.content
+    li.setAttribute('id', 'comment' + comment.id)
     let br = document.createElement('br')
     let up = document.createElement('button')
     up.innerHTML = '▲ ' + comment.upvotes
+    up.classList.add('up')
     let down = document.createElement('button')
     down.innerHTML = '▼ ' + comment.downvotes
+    down.classList.add('down')
     up.addEventListener('click', function() {
-        comment.upvotes = comment.upvotes + 1
-        up.innerHTML = '▲ ' + comment.upvotes
+        let formData = {
+            comment_id: comment.id,
+            upvotes: comment.upvotes
+        };
+           
+        let configObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
+        
+        fetch(COMMENTS_URL + `/${comment.id}`, configObj)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                up.innerHTML = '▲ ' + json.upvotes;
+            })
+            .catch(function(error) {
+                alert('Bad Things!');
+                console.log(error);
+            });
     })
     down.addEventListener('click', function() {
-        comment.downvotes = comment.downvotes + 1
-        down.innerHTML = '▼ ' + comment.downvotes
+        let formData = {
+            comment_id: comment.id,
+            downvotes: comment.downvotes
+        };
+           
+        let configObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
+        
+        fetch(COMMENTS_URL + `/${comment.id}`, configObj)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                down.innerHTML = '▼ ' + json.downvotes;
+            })
+            .catch(function(error) {
+                alert('Bad Things!');
+                console.log(error);
+            });
     })
     li.appendChild(br)
     li.appendChild(up)
     li.appendChild(down)
     list.appendChild(li)
 }
+
+/*function updateVotes(json) {
+    let li = document.getElementById(`comment${json.id}`)
+    let up = li.querySelector('button.up')
+    up.innerHTML = '▲ ' + json.upvotes
+    let down = li.querySelector('button.down')
+    down.innerHTML = '▼ ' + json.downvotes
+}*/
 
 function makeForms(champion) {
     let form = document.createElement('form')
