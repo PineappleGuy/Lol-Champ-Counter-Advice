@@ -177,14 +177,6 @@ function counterComments(comment) {
     list.appendChild(li)
 }
 
-/*function updateVotes(json) {
-    let li = document.getElementById(`comment${json.id}`)
-    let up = li.querySelector('button.up')
-    up.innerHTML = '▲ ' + json.upvotes
-    let down = li.querySelector('button.down')
-    down.innerHTML = '▼ ' + json.downvotes
-}*/
-
 function makeForms(champion) {
     let form = document.createElement('form')
     form.setAttribute('id', 'createAdviceForm')
