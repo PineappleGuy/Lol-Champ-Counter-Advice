@@ -27,7 +27,13 @@ li {
     background: beige;
     border-radius: 5px;
     border: 1px solid black;
-    display: inline-block;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    
 }
 
 form {
@@ -35,6 +41,13 @@ form {
     background: beige;
     border-radius: 5px;
     border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+div.list {
+    background-color: lightgray;
 }
 
 div.card {

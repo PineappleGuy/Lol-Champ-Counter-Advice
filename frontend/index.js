@@ -69,6 +69,37 @@ function championCard(champion) {
     let form = makeForms(champion)
     form.setAttribute('hidden', true)
     counterList.appendChild(form)
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let content = document.querySelector(`input#${champion.name.split(' ').join('')}`)
+        let formData = {
+            content: content.value,
+            champion_id: champion.id
+        };
+           
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
+        
+        fetch(COMMENTS_URL, configObj)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                counterComments(json);
+            })
+            .catch(function(error) {
+                alert('Bad Things!');
+                console.log(error.messages);
+            });
+        
+            content.value = ""
+    })
 }
 
 function counterComments(comment) {
