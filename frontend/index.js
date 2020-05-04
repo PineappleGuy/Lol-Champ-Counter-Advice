@@ -24,14 +24,8 @@ function championCard(champion) {
     counterList.classList.add(`${champion.name.split(' ').join('')}`)
     counterList.setAttribute('id', champion.id)
     let card = document.createElement('div') 
-   /*let counterCard = document.createElement('div')*/
     card.classList.add('card')
     card.classList.add(`${champion.name.split(' ').join('')}`)
-    /*counterCard.classList.add('card')
-    counterCard.classList.add('counterCard')
-    counterCard.setAttribute('hidden', true)
-    counterCard.setAttribute('id', champion.id)
-    counterCard.classList.add(`${champion.name.split(' ').join('')}`)*/
     card.addEventListener('click', function() {
         let cards = document.getElementsByClassName('card')
         for(let x = 0; x < cards.length; x++) {
@@ -54,6 +48,7 @@ function championCard(champion) {
             }  
         }
     })
+    
     let img = document.createElement('img')
     img.setAttribute('src', champion.image_url)
     if(champion.name == 'Sett' || champion.name == 'Aphelios') {
@@ -61,12 +56,8 @@ function championCard(champion) {
     }
     let h2 = document.createElement('h2')
     h2.innerText = champion.name
-    /*let counterh2 = document.createElement('h2')
-    counterh2.innerText = champion.name + ' Counter Advice'
-    counterh2.setAttribute('hidden', true)*/
     card.appendChild(img)
     card.appendChild(h2)
-    /*counterCard.appendChild(counterh2)*/
     let ul = document.createElement('ul')
     ul.classList.add(`${champion.name.split(' ').join('')}`)
     ul.setAttribute('hidden', true)
@@ -75,8 +66,7 @@ function championCard(champion) {
     div.appendChild(champContainer)
     champContainer.appendChild(card)
     champContainer.appendChild(counterList)
-    /*div.appendChild(counterCard)*/
-    let form = makeForms(champion);
+    let form = makeForms(champion)
     form.setAttribute('hidden', true)
     counterList.appendChild(form)
 }
