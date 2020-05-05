@@ -13,8 +13,6 @@ img.clip {
     width: 250px;
 }
 
-
-
 ul {
     list-style-type: none;
     text-align: center;
@@ -38,15 +36,22 @@ li {
 form {
     text-align: center;
     background: beige;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
-    width: 600px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 500px;
 }
 
 div.list {
     background-color: lightgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
 }
 
 div.card {

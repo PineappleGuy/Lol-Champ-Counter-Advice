@@ -23,32 +23,10 @@ function championCard(champion) {
     counterList.classList.add('list')
     counterList.classList.add(`${champion.name.split(' ').join('')}`)
     counterList.setAttribute('id', champion.id)
+    counterList.setAttribute('hidden', true)
     let card = document.createElement('div') 
     card.classList.add('card')
     card.classList.add(`${champion.name.split(' ').join('')}`)
-    card.addEventListener('click', function() {
-        let cards = document.getElementsByClassName('card')
-        for(let x = 0; x < cards.length; x++) {
-            if(cards[x].classList.contains(champion.name.split(' ').join('')) == false && cards[x].hasAttribute('hidden') == false) {
-                cards[x].setAttribute('hidden', true)
-                div.classList.remove('champion-cards')
-            }
-            else if(cards[x].classList.contains(champion.name.split(' ').join('')) == true) {
-                ul.removeAttribute('hidden')
-                form.removeAttribute('hidden')
-                h2.innerText = `How to counter ${champion.name}:`
-            }
-            else {
-                cards[x].removeAttribute('hidden')
-                div.classList.add('champion-cards')
-                ul.setAttribute('hidden', true)
-                h2.innerText = champion.name
-                card.scrollIntoView()
-                form.setAttribute('hidden', true)
-            }  
-        }
-    })
-    
     let img = document.createElement('img')
     img.setAttribute('src', champion.image_url)
     if(champion.name == 'Sett' || champion.name == 'Aphelios') {
@@ -60,23 +38,51 @@ function championCard(champion) {
     card.appendChild(h2)
     let ul = document.createElement('ul')
     ul.classList.add(`${champion.name.split(' ').join('')}`)
-    ul.setAttribute('hidden', true)
-
     counterList.appendChild(ul)
     div.appendChild(champContainer)
     champContainer.appendChild(card)
     champContainer.appendChild(counterList)
     let form = makeForms(champion)
-    form.setAttribute('hidden', true)
     counterList.appendChild(form)
+    img.addEventListener('click', function() {
+        if(div.classList.contains('champion-cards') == true) {
+            div.classList.remove('champion-cards')
+        }
+        else {
+            div.classList.add('champion-cards')
+        }
+        let cards = document.getElementsByClassName('card')
+        let lists = document.getElementsByClassName('list')
+        for(let x = 0; x < cards.length; x++) {
+            if(cards[x].classList.contains(champion.name.split(' ').join('')) == false) {
+                if(cards[x].hasAttribute('hidden') == false) {
+                    cards[x].setAttribute('hidden', true)
+                }
+                else {
+                    cards[x].removeAttribute('hidden')
+                }
+            }
+            else {
+                if(counterList.hasAttribute('hidden') == true) {
+                    counterList.removeAttribute('hidden')
+                    h2.innerText = `How to counter ${champion.name}:`
+                }
+                else {
+                    counterList.setAttribute('hidden', true)
+                    h2.innerText = champion.name
+                    card.scrollIntoView()
+                }
+            }  
+        }
+    })
+
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         let content = document.querySelector(`input#${champion.name.split(' ').join('')}`)
         let formData = {
             content: content.value,
             champion_id: champion.id
-        };
-           
+        }; 
         let configObj = {
             method: "POST",
             headers: {
@@ -85,7 +91,6 @@ function championCard(champion) {
             },
             body: JSON.stringify(formData)
         };
-        
         fetch(COMMENTS_URL, configObj)
             .then(function(response) {
                 return response.json();
@@ -97,8 +102,7 @@ function championCard(champion) {
                 alert('Bad Things!');
                 console.log(error.messages);
             });
-        
-            content.value = ""
+        content.value = ""
     })
     
 }
@@ -121,7 +125,6 @@ function counterComments(comment) {
             comment_id: comment.id,
             upvotes: comment.upvotes
         };
-           
         let configObj = {
             method: "PATCH",
             headers: {
@@ -130,7 +133,6 @@ function counterComments(comment) {
             },
             body: JSON.stringify(formData)
         };
-        
         fetch(COMMENTS_URL + `/${comment.id}`, configObj)
             .then(function(response) {
                 return response.json();
@@ -181,9 +183,9 @@ function makeForms(champion) {
     form.setAttribute('id', 'createAdviceForm')
     form.setAttribute('action', '#')
     form.setAttribute('method', 'post')
-    let label = document.createElement('label')
+   /* let label = document.createElement('label')
     label.setAttribute('for', `${champion.name.split(' ').join('')}`)
-    label.innerText = 'Countering Advice: '
+    label.innerText = 'Countering Advice: '*/
     let input1 = document.createElement('input')
     input1.setAttribute('type', 'text')
     input1.setAttribute('id', `${champion.name.split(' ').join('')}`)
@@ -192,7 +194,7 @@ function makeForms(champion) {
     let input2 = document.createElement('input')
     input2.setAttribute('type', 'submit')
     input2.setAttribute('value', 'Give Advice!')
-    form.appendChild(label)
+    /*form.appendChild(label)*/
     form.appendChild(input1)
     form.appendChild(input2)
     return form
