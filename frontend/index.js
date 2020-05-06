@@ -2,17 +2,22 @@ const BASE_URL = "http://localhost:3000"
 const CHAMPIONS_URL = `${BASE_URL}/champions`
 const COMMENTS_URL = `${BASE_URL}/comments`
 
-fetch(CHAMPIONS_URL)
-    .then((resp) => resp.json())
-    .then(function(json) {
-        json.forEach(championCard)
-    });   
+function fetchChampions() {
+    fetch(CHAMPIONS_URL)
+        .then((resp) => resp.json())
+        .then(function(json) {
+            json.forEach(championCard)
+        });   
+}
 
-fetch(COMMENTS_URL)
-    .then((resp) => resp.json())
-    .then(function(json) {
-        json.forEach(counterComments)
-    });
+function fetchComments() {
+    fetch(COMMENTS_URL)
+        .then((resp) => resp.json())
+        .then(function(json) {
+            json.forEach(counterComments)
+        });   
+}
+
 
 function championCard(champion) {
     let div = document.querySelector('div.champion-cards')
@@ -28,12 +33,14 @@ function championCard(champion) {
     card.classList.add('card')
     card.classList.add(`${champion.name.split(' ').join('')}`)
     let img = document.createElement('img')
+    img.classList.add('image')
     img.setAttribute('src', champion.image_url)
     if(champion.name == 'Sett' || champion.name == 'Aphelios') {
         img.classList.add('clip')
     }
     let h2 = document.createElement('h2')
     h2.innerText = champion.name
+    h2.classList.add('middle')
     card.appendChild(img)
     card.appendChild(h2)
     let ul = document.createElement('ul')
@@ -42,17 +49,20 @@ function championCard(champion) {
     div.appendChild(champContainer)
     champContainer.appendChild(card)
     champContainer.appendChild(counterList)
+
     let form = makeForms(champion)
     counterList.appendChild(form)
+    let selector = document.querySelector('div.champion-dropdown')
     img.addEventListener('click', function() {
         if(div.classList.contains('champion-cards') == true) {
             div.classList.remove('champion-cards')
+            selector.setAttribute('hidden', true)
         }
         else {
             div.classList.add('champion-cards')
+            selector.removeAttribute('hidden')
         }
         let cards = document.getElementsByClassName('card')
-        let lists = document.getElementsByClassName('list')
         for(let x = 0; x < cards.length; x++) {
             if(cards[x].classList.contains(champion.name.split(' ').join('')) == false) {
                 if(cards[x].hasAttribute('hidden') == false) {
@@ -66,10 +76,14 @@ function championCard(champion) {
                 if(counterList.hasAttribute('hidden') == true) {
                     counterList.removeAttribute('hidden')
                     h2.innerText = `How to counter ${champion.name}:`
+                    h2.classList.remove('middle')
+                    img.classList.remove('image')
                 }
                 else {
                     counterList.setAttribute('hidden', true)
                     h2.innerText = champion.name
+                    h2.classList.add('middle')
+                    img.classList.add('image')
                     card.scrollIntoView()
                 }
             }  
@@ -104,7 +118,7 @@ function championCard(champion) {
             });
         content.value = ""
     })
-    
+    championSort(champion, champContainer)
 }
 
 function counterComments(comment) {
@@ -183,9 +197,9 @@ function makeForms(champion) {
     form.setAttribute('id', 'createAdviceForm')
     form.setAttribute('action', '#')
     form.setAttribute('method', 'post')
-   /* let label = document.createElement('label')
+    let label = document.createElement('label')
     label.setAttribute('for', `${champion.name.split(' ').join('')}`)
-    label.innerText = 'Countering Advice: '*/
+    label.innerText = 'Countering Advice: '
     let input1 = document.createElement('input')
     input1.setAttribute('type', 'text')
     input1.setAttribute('id', `${champion.name.split(' ').join('')}`)
@@ -200,3 +214,25 @@ function makeForms(champion) {
     return form
 }
 
+function championSort(champion, champContainer) {
+    let letter = champion.name.charAt(0)
+    let selector = document.getElementById('champion-dropdown')
+    selector.addEventListener('change', function() {
+        let L = this.value
+        if(L == "") {
+            champContainer.removeAttribute('hidden')
+        }
+        else if(letter != L) {
+            champContainer.setAttribute('hidden', true)
+        }
+        else {
+            champContainer.removeAttribute('hidden')
+        }
+    }, false)
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetchChampions();
+    fetchComments();
+})
