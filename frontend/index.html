@@ -15,7 +15,7 @@
 
         <main>
 
-            <div class="champion-dropdown">
+            <div class="filter-options">
                 <label for="select-champions">Filter Champions That Start with:</label>
                 <select id="champion-dropdown" name="select-champion">
                     <option value=""></option>
@@ -46,7 +46,10 @@
                     <option value="Y">Y</option>
                     <option value="Z">Z</option>
                 </select>
+                or
+                <input type="text" id="searchInput" onkeyup="championSearch()" placeholder="Search for Champion..">
             </div><br><br>
+            
 
             <div class="champion-cards">
                 

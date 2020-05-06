@@ -26,12 +26,11 @@ function championCard(champion) {
     champContainer.classList.add(`${champion.name.split(' ').join('')}`)
     let counterList = document.createElement('div')
     counterList.classList.add('list')
-    counterList.classList.add(`${champion.name.split(' ').join('')}`)
     counterList.setAttribute('id', champion.id)
     counterList.setAttribute('hidden', true)
     let card = document.createElement('div') 
     card.classList.add('card')
-    card.classList.add(`${champion.name.split(' ').join('')}`)
+    card.setAttribute('name', champion.name)
     let img = document.createElement('img')
     img.classList.add('image')
     img.setAttribute('src', champion.image_url)
@@ -44,7 +43,6 @@ function championCard(champion) {
     card.appendChild(img)
     card.appendChild(h2)
     let ul = document.createElement('ul')
-    ul.classList.add(`${champion.name.split(' ').join('')}`)
     counterList.appendChild(ul)
     div.appendChild(champContainer)
     champContainer.appendChild(card)
@@ -52,7 +50,7 @@ function championCard(champion) {
 
     let form = makeForms(champion)
     counterList.appendChild(form)
-    let selector = document.querySelector('div.champion-dropdown')
+    let selector = document.querySelector('div.filter-options')
     img.addEventListener('click', function() {
         if(div.classList.contains('champion-cards') == true) {
             div.classList.remove('champion-cards')
@@ -62,9 +60,9 @@ function championCard(champion) {
             div.classList.add('champion-cards')
             selector.removeAttribute('hidden')
         }
-        let cards = document.getElementsByClassName('card')
+        let cards = document.getElementsByClassName('card')/*classList.contains(champion.name.split(' ').join('')) */
         for(let x = 0; x < cards.length; x++) {
-            if(cards[x].classList.contains(champion.name.split(' ').join('')) == false) {
+            if(cards[x].getAttribute('name') != champion.name) {
                 if(cards[x].hasAttribute('hidden') == false) {
                     cards[x].setAttribute('hidden', true)
                 }
@@ -80,11 +78,13 @@ function championCard(champion) {
                     img.classList.remove('image')
                 }
                 else {
-                    counterList.setAttribute('hidden', true)
+                    location.reload();
+                    /*counterList.setAttribute('hidden', true)
                     h2.innerText = champion.name
                     h2.classList.add('middle')
                     img.classList.add('image')
-                    card.scrollIntoView()
+                    card.scrollIntoView()*/
+                    
                 }
             }  
         }
@@ -229,6 +229,23 @@ function championSort(champion, champContainer) {
             champContainer.removeAttribute('hidden')
         }
     }, false)
+}
+
+function championSearch() {
+    let input = document.getElementById('searchInput')
+    let filter = input.value.toUpperCase()
+    let divs = document.getElementsByClassName('card')
+    let cards = document.getElementsByClassName('championContainer')
+    for (let x = 0; x < divs.length; x++) {
+        a = divs[x].querySelector('h2')
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            cards[x].removeAttribute('hidden');
+        }
+        else {
+            cards[x].setAttribute('hidden', true)
+        }
+    }
 }
 
 

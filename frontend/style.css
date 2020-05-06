@@ -12,7 +12,7 @@ h1 {
     text-align: center;
 }
 
-.champion-dropdown {
+.filter-options {
     text-align: center;
 }
 
@@ -70,7 +70,7 @@ div.list {
     padding-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
-    width: 800px;
+    
 }
 
 ul {
