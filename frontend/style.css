@@ -2,18 +2,22 @@ body {
     background-color: lightyellow;
     margin-left: 200px;
     margin-right: 200px;
+    text-align: center;
 }
 
 header {
     background-color: lightgray;
 }
 
-h1 {
-    text-align: center;
+p {
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
-.filter-options {
-    text-align: center;
+@media (min-width: 1330px) {
+    #searchInput {
+        float: right;
+    }
 }
 
 div.champion-cards {
@@ -44,6 +48,7 @@ div.card {
   
 .card:hover .image {
     opacity: 0.3;
+    transform: scale(1.03);
     box-shadow: 9px 9px 0px gray;
 }
   
@@ -90,7 +95,13 @@ li {
     margin-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
-    width: 600px;
+    
+}
+
+@media (min-width: 1016px) {
+    li {
+       width: 600px; 
+    }
 }
 
 form {
@@ -102,53 +113,10 @@ form {
     margin-right: auto;
     padding-top: 3px;
     padding-bottom: 3px;
-    width: 500px;
 }
 
-    /* was inside div.champion-cards
-    display: grid;
-    grid-gap: 10px;
-    justify-content: center;*/
-
-
-/*@media (min-width: 1870px) {
-    div.champion-cards{
-        grid-template: auto / repeat(5, 1fr);
+@media (min-width: 910px) {
+    form {
+       width: 500px; 
     }
 }
-
-@media (min-width: 1600px) and (max-width: 1870px) {
-    div.champion-cards{
-        grid-template: auto / repeat(4, 1fr);
-    }
-}
-
-@media (min-width: 1350px) and (max-width: 1600px) {
-    div.champion-cards{
-        grid-template: auto / repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 1090px) and (max-width: 1350px) {
-    div.champion-cards{
-        grid-template: auto / repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 833px) and (max-width: 1090px) {
-    div.champion-cards{
-        grid-template: auto / repeat(2, 1fr); 
-    }
-}
-
-@media (min-width: 555px) and (max-width: 833px) {
-    div.champion-cards{
-        grid-template: auto / repeat(1, 1fr);
-    }
-}
-
-@media (max-width: 555px) {
-    div.champion-cards{
-        grid-template: auto / 1fr; 
-    }
-}*/

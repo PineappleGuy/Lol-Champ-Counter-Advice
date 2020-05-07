@@ -50,17 +50,17 @@ function championCard(champion) {
 
     let form = makeForms(champion)
     counterList.appendChild(form)
-    let selector = document.querySelector('div.filter-options')
+    let searchBar = document.querySelector('div.search-bar')
     img.addEventListener('click', function() {
         if(div.classList.contains('champion-cards') == true) {
             div.classList.remove('champion-cards')
-            selector.setAttribute('hidden', true)
+            searchBar.setAttribute('hidden', true)
         }
         else {
             div.classList.add('champion-cards')
-            selector.removeAttribute('hidden')
+            searchBar.removeAttribute('hidden')
         }
-        let cards = document.getElementsByClassName('card')/*classList.contains(champion.name.split(' ').join('')) */
+        let cards = document.getElementsByClassName('card')
         for(let x = 0; x < cards.length; x++) {
             if(cards[x].getAttribute('name') != champion.name) {
                 if(cards[x].hasAttribute('hidden') == false) {
@@ -79,12 +79,6 @@ function championCard(champion) {
                 }
                 else {
                     location.reload();
-                    /*counterList.setAttribute('hidden', true)
-                    h2.innerText = champion.name
-                    h2.classList.add('middle')
-                    img.classList.add('image')
-                    card.scrollIntoView()*/
-                    
                 }
             }  
         }
@@ -118,7 +112,6 @@ function championCard(champion) {
             });
         content.value = ""
     })
-    championSort(champion, champContainer)
 }
 
 function counterComments(comment) {
@@ -197,9 +190,6 @@ function makeForms(champion) {
     form.setAttribute('id', 'createAdviceForm')
     form.setAttribute('action', '#')
     form.setAttribute('method', 'post')
-    let label = document.createElement('label')
-    label.setAttribute('for', `${champion.name.split(' ').join('')}`)
-    label.innerText = 'Countering Advice: '
     let input1 = document.createElement('input')
     input1.setAttribute('type', 'text')
     input1.setAttribute('id', `${champion.name.split(' ').join('')}`)
@@ -208,27 +198,9 @@ function makeForms(champion) {
     let input2 = document.createElement('input')
     input2.setAttribute('type', 'submit')
     input2.setAttribute('value', 'Give Advice!')
-    /*form.appendChild(label)*/
     form.appendChild(input1)
     form.appendChild(input2)
     return form
-}
-
-function championSort(champion, champContainer) {
-    let letter = champion.name.charAt(0)
-    let selector = document.getElementById('champion-dropdown')
-    selector.addEventListener('change', function() {
-        let L = this.value
-        if(L == "") {
-            champContainer.removeAttribute('hidden')
-        }
-        else if(letter != L) {
-            champContainer.setAttribute('hidden', true)
-        }
-        else {
-            champContainer.removeAttribute('hidden')
-        }
-    }, false)
 }
 
 function championSearch() {
