@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 2020_04_23_194842) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "upvotes"
-    t.integer "downvotes"
+    t.integer "upvotes", default: 1
+    t.integer "downvotes", default: 0
+    t.integer "difference", default: 1
     t.integer "champion_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

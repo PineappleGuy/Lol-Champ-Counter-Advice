@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
 
     def index
-        comments = Comment.all
+        comments = Comment.order(difference: :desc, upvotes: :desc)
         render json: comments
     end
 
      def create
-        comment = Comment.create(content: params[:content], champion_id: params[:champion_id], upvotes: 1, downvotes: 0)
+        comment = Comment.create(content: params[:content], champion_id: params[:champion_id])
         render json: comment
      end
 
@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
         else
             comment.update(downvotes: params[:downvotes] + 1)
         end
+        comment.update(difference: comment.upvotes - comment.downvotes)
         render json: comment
      end
         
