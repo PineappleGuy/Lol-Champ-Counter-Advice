@@ -1,7 +1,6 @@
 class Comment {
 
     constructor(comment) {
-        console.log(comment)
         this.championId = comment.champion_id
         this.content = comment.content
         this.upvotes = comment.upvotes

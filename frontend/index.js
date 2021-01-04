@@ -120,7 +120,6 @@ function formSubmitEvent(card, champion) {
                 return response.json();
             })
             .then(function(json) {
-                console.log(json)
                 counterComments(json);
             })
             .catch(function(error) {
@@ -134,13 +133,13 @@ function formSubmitEvent(card, champion) {
 function addButtonEvents(li, com) {
     let up = li.getElementsByClassName('up')[0]
     up.addEventListener('click', function() {
-        let json = com.vote(1)
-        up.innerText = '▲ ' + json.upvotes;
+        let comment = com.vote(1)
+        up.innerText = '▲ ' + comment.upvotes;
     })
     let down = li.getElementsByClassName('down')[0]
     down.addEventListener('click', function() {                                                  
-        let json = com.vote(-1) 
-        down.innerText = '▼ ' + json.downvotes;                                    
+        let comment = com.vote(-1) 
+        down.innerText = '▼ ' + comment.downvotes;                                    
     })
 }
 
