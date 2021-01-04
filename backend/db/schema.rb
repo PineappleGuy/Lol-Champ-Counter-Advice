@@ -15,6 +15,16 @@ ActiveRecord::Schema.define(version: 2020_04_23_194842) do
   create_table "champions", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
+    t.string "passive_title"
+    t.string "passive_description"
+    t.string "q_title"
+    t.string "q_description"
+    t.string "w_title"
+    t.string "w_description"
+    t.string "e_title"
+    t.string "e_description"
+    t.string "r_title"
+    t.string "r_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
